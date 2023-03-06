@@ -1,12 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" href="https://icon-icons.com/downloadimage.php?id=99364&root=1451/ICO/512/&file=codefolder_99364.ico">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
-<body>
+<body style="display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+width: 100%;
+height: 100%;">
+    <div>
+        <div id="task">A. Казак Вус и контест
+ограничение по времени на тест1 секунда
+ограничение по памяти на тест256 мегабайт
+вводстандартный ввод
+выводстандартный вывод
+Казак Вус проводит соревнование по программированию, в котором участвуют n
+ людей. Он решил наградить их всех ручками и блокнотами. Известно, что у Вуса есть ровно m
+ ручек и k
+ блокнотов.
 
-<h1> Welcame home </h1>
+Определите, может ли Казак наградить всех участников, давая каждому из них как минимум по одной ручке и как минимум по одному блокноту.
 
+Входные данные
+Первая строка содержит три целых числа n
+, m
+, k
+ (1≤n,m,k≤100
+) — количество участников, ручек и блокнотов соответственно.
+
+Выходные данные
+Выведите «Yes», если возможно наградить всех участников. Иначе выведите «No».
+
+Вы можете выводить каждую букву в любом регистре (строчную или заглавную).</div>
+        <div id="code" contenteditable="true">n, m, k = map( int, input().split())<br>print('Yes' if min(m, k) >= n else 'No')</div>
+        <div id="status"></div>
+    </div>
+    <button id="check" style="width: 750px; height: 750px;">Проверить</button>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    let timeoutID = -1;
+    $("#check").on("click", function(e){
+        if (timeoutID > -1) {
+            return
+        }
+        $.ajax({
+                url: '{% url "test_code" %}',
+                method: 'get',
+                dataType: 'json',
+                data: { code: $('#code')[0].innerText },
+            });
+        get_status();
+    });
+
+    function get_status() {
+        timeoutID = setTimeout(get_status, 500);
+        $.ajax({
+            url: '{% url "get_status" %}',
+            method: 'get',
+            success: function(response){
+                $('#status')[0].innerText = response.answer;
+                if (response.done === 1) {
+                    clearTimeout(timeoutID);
+                    timeoutID = -1;
+                }
+            },
+        });
+    };
+    </script>
+    {% csrf_token %}
 </body>
 </html>

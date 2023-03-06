@@ -1,2 +1,5 @@
 prog/__pycache__/
 one_test/__pycache__/
+db.sqlite3
+ssh 195.19.40.45 -p 22 -l vilensky
+export PATH=$PATH:~/prog.iu9.bmstu.ru
