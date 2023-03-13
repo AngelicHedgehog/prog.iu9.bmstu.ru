@@ -15,7 +15,7 @@ def filter_string(s):
 def submit_code(code, url):
     open('stdout', 'w').truncate()
     open('a.py', 'w').write(filter_string(code))
-    subprocess.call(['cf', 'submit', '-f', 'a.py', url],
+    subprocess.call(['./cf', 'submit', '-f', 'a.py', url],
                     stdout=open('stdout', 'w'),
                     encoding='utf8')
 

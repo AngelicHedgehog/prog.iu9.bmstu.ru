@@ -5,6 +5,8 @@ import sys
 
 
 def main():
+    os.system('export PATH="$PATH:~/prog.iu9.bmstu.ru"')
+    
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'prog.settings')
     try:
