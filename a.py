@@ -1,2 +1,5 @@
-n, m, k = map(int, input().split())
-print("Yes" if min(m, k) >= n else 'No')
+print('''2
+3
+2
+3
+1''')

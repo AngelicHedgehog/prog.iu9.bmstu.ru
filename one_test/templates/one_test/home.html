@@ -5,53 +5,108 @@
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
-<body style="display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-width: 100%;
-height: 100%;">
-    <div>
-        <div id="task">A. Казак Вус и контест
-ограничение по времени на тест1 секунда
-ограничение по памяти на тест256 мегабайт
-вводстандартный ввод
-выводстандартный вывод
-Казак Вус проводит соревнование по программированию, в котором участвуют n
- людей. Он решил наградить их всех ручками и блокнотами. Известно, что у Вуса есть ровно m
- ручек и k
- блокнотов.
-
-Определите, может ли Казак наградить всех участников, давая каждому из них как минимум по одной ручке и как минимум по одному блокноту.
-
-Входные данные
-Первая строка содержит три целых числа n
-, m
-, k
- (1≤n,m,k≤100
-) — количество участников, ручек и блокнотов соответственно.
-
-Выходные данные
-Выведите «Yes», если возможно наградить всех участников. Иначе выведите «No».
-
-Вы можете выводить каждую букву в любом регистре (строчную или заглавную).</div>
-        <div id="code" contenteditable="true">n, m, k = map( int, input().split())<br>print('Yes' if min(m, k) >= n else 'No')</div>
-        <div id="status"></div>
+<body>
+    <div style="display: flex;">
+        <select multiple id="tags" size="37" style="width: 225px; position: absolute">
+            <option value=""></option>
+            <option value="2-sat" title="2-SAT (2-satisfiability)">2-sat</option>
+            <option value="meet-in-the-middle" title="Meet-in-the-middle">meet-in-the-middle</option>
+            <option value="binary search" title="Бинарный поиск">бинарный поиск</option>
+            <option value="bitmasks" title="Битовые маски">битмаски</option>
+            <option value="fft" title="Быстрое преобразование Фурье">бпф</option>
+            <option value="geometry" title="Геометрия">геометрия</option>
+            <option value="graphs" title="Графы">графы</option>
+            <option value="two pointers" title="Два указателя">два указателя</option>
+            <option value="trees" title="Деревья">деревья</option>
+            <option value="dp" title="Динамическое программирование">дп</option>
+            <option value="greedy" title="Жадные алгоритмы">жадные алгоритмы</option>
+            <option value="games" title="Игры, функция Шпрага-Гранди">игры</option>
+            <option value="interactive" title="Интерактивная задача">интерактив</option>
+            <option value="chinese remainder theorem" title="Китайская теорема об остатках, алгоритм Гарнера">китайская теорема об остатках</option>
+            <option value="combinatorics" title="Комбинаторика">комбинаторика</option>
+            <option value="constructive algorithms" title="Конструктивные алгоритмы">конструктив</option>
+            <option value="shortest paths" title="Кратчайшие пути на графах">кратчайшие пути</option>
+            <option value="math" title="Интегрирование, диффуры и др.">математика</option>
+            <option value="matrices" title="Произведение матриц, определитель, правило Крамера, системы линейных уравнений">матрицы</option>
+            <option value="graph matchings" title="Паросочетания, теорема Кёнига, вершинные и реберные покрытия в двудольных графах">паросочетания</option>
+            <option value="brute force" title="Перебор">перебор</option>
+            <option value="dfs and similar" title="Поиск в глубину и подобные алгоритмы">поиск в глубину и подобное</option>
+            <option value="flows" title="Потоки в графах">потоки</option>
+            <option value="expression parsing" title="Разбор выражений">разбор выражений</option>
+            <option value="divide and conquer" title="Разделяй и властвуй">разделяй и властвуй</option>
+            <option value="schedules" title="Алгоритмы теории расписаний">расписания</option>
+            <option value="implementation" title="Реализация, техника программирования, симуляция">реализация</option>
+            <option value="dsu" title="Система непересекающихся множеств">снм</option>
+            <option value="sortings" title="Сортировки, упорядочения">сортировки</option>
+            <option value="strings" title="Префикс- и Z-функции, суффиксные структуры, алгоритм Кнута-Морриса-Пратта и др.">строки</option>
+            <option value="string suffix structures" title="Суффиксные массивы, деревья и автоматы">строковые суфф. структуры</option>
+            <option value="data structures" title="Кучи, деревья отрезков, деревья поиска и др.">структуры данных</option>
+            <option value="probabilities" title="Вероятности, мат. ожидания, случайные величины и др.">теория вероятностей</option>
+            <option value="number theory" title="Теория чисел: функция Эйлера, НОД, делимость и др.">теория чисел</option>
+            <option value="ternary search" title="Тернарный поиск">тернарный поиск</option>
+            <option value="hashing" title="Хэши, хэш-таблицы">хэши</option>
+        </select>
+        <select id="problems" style="margin-left:225px; width: 225px; position: absolute">
+        </select>
+        <div id="task" style="margin-left: 450px; display: flex">
+            <link rel="stylesheet" href="https://cdn.codeforces.com/s/62388/css/style.css" type="text/css" charset="utf-8">
+            <link rel="stylesheet" href="https://cdn.codeforces.com/s/62388/css/problem-statement.css" type="text/css" charset="utf-8">
+            <div class="problem-statement"></div>
+        </div>
+        <div>
+            <div id="code" contenteditable="true" style="overflow-y: scroll; width: 300px; height: 300px; background-color: aliceblue"></div>
+            <button id="check" style="width: 300px; height: 300px">Проверить</button>
+            <div id="status" style="width: 300px; height: 300px; background-color: lightgreen"></div>
+        </div>
     </div>
-    <button id="check" style="width: 750px; height: 750px;">Проверить</button>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-    let timeoutID = -1;
-    $("#check").on("click", function(e){
-        if (timeoutID > -1) {
-            return
-        }
-        $.ajax({
-                url: '{% url "test_code" %}',
-                method: 'get',
-                dataType: 'json',
-                data: { code: $('#code')[0].innerText },
+    let xhr = new XMLHttpRequest();
+
+    $('#tags').change(() => {
+        let url = 'https://codeforces.com/api/problemset.problems?tags=' + $('#tags').val().join(';');
+        fetch(url).then((r) => r.json()).then( async (prom) => {
+            let data = (await prom).result;
+            $('#problems').find('option').remove();
+            $.each(data.problems, (key, val) => {
+                let problem_url = 'https://codeforces.com/problemset/problem/'+val.contestId+'/'+val.index
+                $('#problems').append('<option value="'+problem_url+'">'+val.name+'</option>')
             });
+            $('#problems').change();
+        });
+    });
+
+    $('#problems').change((e) => {
+        if (!$('#problems').val()) return;
+        $.ajax({
+            url: '{% url "get_task" %}',
+            method: 'get',
+            dataType: 'json',
+            data: { url: $('#problems').val() },
+            success: (response) => {
+                $('.problem-statement')[0].innerHTML = response.html;
+                $('.problem-statement')[0].innerHTML = $('.problem-statement')[1].innerHTML;
+            },
+        });
+    });
+    
+    let timeoutID = -1;
+    $('#check').on('click', () => {
+        if (timeoutID > -1) return
+        $.ajax({
+            url: '{% url "test_code" %}',
+            method: 'get',
+            dataType: 'json',
+            data: {
+                code: $('#code')[0].innerText,
+                url: $('#problems').val(),
+            },
+            error: () => {
+                clearTimeout(timeoutID);
+                timeoutID = -1;
+            }
+        });
         get_status();
     });
 
@@ -60,7 +115,7 @@ height: 100%;">
         $.ajax({
             url: '{% url "get_status" %}',
             method: 'get',
-            success: function(response){
+            success: (response) => {
                 $('#status')[0].innerText = response.answer;
                 if (response.done === 1) {
                     clearTimeout(timeoutID);
