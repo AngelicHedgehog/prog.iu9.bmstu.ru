@@ -3,5 +3,6 @@ one_test/__pycache__/
 db.sqlite3
 venv/
 a.py
+stdout
 # ssh 195.19.40.45 -p 22 -l vilensky
 # killall -u vilensky
